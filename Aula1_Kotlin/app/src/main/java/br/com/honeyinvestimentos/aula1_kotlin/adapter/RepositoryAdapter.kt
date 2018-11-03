@@ -8,22 +8,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.honeyinvestimentos.aula1_kotlin.R
-import br.com.honeyinvestimentos.aula1_kotlin.model.ProgrammingLanguage
+import br.com.honeyinvestimentos.aula1_kotlin.api.Repository
 import com.bumptech.glide.Glide
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.programming_lang_item.view.*
+import kotlinx.android.synthetic.main.repository_lang_item.view.*
 
-class ProgrammingLanguageAdapter(
-        private val items: List<ProgrammingLanguage>,
+class RepositoryAdapter(
+        private val items: List<Repository>,
         private val context:Context,
-        private val listenner: (ProgrammingLanguage) -> Unit) :
-        Adapter<ProgrammingLanguageAdapter.ViewHolder>()
+        private val listenner: (Repository) -> Unit) :
+        Adapter<RepositoryAdapter.ViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val view = LayoutInflater
                 .from(context)
-                .inflate(R.layout.programming_lang_item, parent, false)
+                .inflate(R.layout.repository_lang_item, parent, false)
 
         return ViewHolder(view)
     }
@@ -38,21 +37,23 @@ class ProgrammingLanguageAdapter(
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        fun bindView(item:ProgrammingLanguage, listenner: (ProgrammingLanguage)->Unit)=
+        fun bindView(item:Repository, listenner: (Repository)->Unit)=
                 with(itemView){
 
-                    /*
+
                     Glide.with(context)
-                            .load("https://upload.wikimedia.org/wikipedia/commons/b/b5/Kotlin-logo.png")
+                            .load(item.owner.avatar_url)
                             .into(ivMain)
-                    */
+
+                    /*
                     Picasso.get()
                             .load("https://upload.wikimedia.org/wikipedia/commons/b/b5/Kotlin-logo.png")
                             .into(ivMain)
+                               */
 
                     //ivMain.setImageDrawable(ContextCompat.getDrawable(context,item.imageResourceId))
-                    tvTitle.text = item.title
-                    tvLaunchYear.text = item.year.toString()
+                    tvTitle.text = item.name
+                    tvOwner.text = item.owner.login
                     tvDescription.text = item.description
 
                     setOnClickListener { listenner(item) }
