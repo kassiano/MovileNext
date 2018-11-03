@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "136981544820",
+    "firebase_url": "https://movilenextpushkassianoresende.firebaseio.com",
+    "project_id": "movilenextpushkassianoresende",
+    "storage_bucket": "movilenextpushkassianoresende.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136981544820:android:955922df7d142cf7",
+        "android_client_info": {
+          "package_name": "com.example.office.movilenext_day2_push"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136981544820-5iqh04fhc1gk7ia81gbes626imj4r5em.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATHXa6sDqfNWQVo5p5wlZb4hfdkVV0C_0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
