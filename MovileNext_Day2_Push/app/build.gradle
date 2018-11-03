@@ -31,7 +31,29 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.google.firebase:firebase-core:16.0.5'
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:16.0.5"
+    implementation "com.google.firebase:firebase-messaging:17.3.4"
+
+    // Anko
+    implementation "org.jetbrains.anko:anko-commons:0.10.7"
+    implementation "org.jetbrains.anko:anko-design:0.10.7"
+
 }
+
+
+configurations.all {
+    resolutionStrategy.eachDependency { details ->
+        def requested = details.requested
+        if (requested.group == "com.android.support") {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion "28.0.0"
+            }
+        }
+    }
+}
+
+
 
 apply plugin: 'com.google.gms.google-services'
