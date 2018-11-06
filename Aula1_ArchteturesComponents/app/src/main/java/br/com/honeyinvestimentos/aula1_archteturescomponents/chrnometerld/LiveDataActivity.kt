@@ -18,7 +18,6 @@ class LiveDataActivity : AppCompatActivity() {
         setContentView(R.layout.activity_live_data)
 
         subscribe()
-
     }
 
     private fun subscribe() {

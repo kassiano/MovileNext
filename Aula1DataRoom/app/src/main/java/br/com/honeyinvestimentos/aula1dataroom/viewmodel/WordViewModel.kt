@@ -10,8 +10,6 @@ class WordViewModel : ViewModel() {
     private val repository = WordRepository()
     val allWords = repository.allWords
 
-    //val allWords = MutableLiveData<List<Word>>()
-
     val insert:(Word)-> Future<Long> = repository.insert
 
 }

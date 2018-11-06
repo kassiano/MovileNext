@@ -51,8 +51,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
         fab.setOnClickListener {
 
             val intent = Intent(this, NewWordActivity::class.java)
@@ -61,9 +59,28 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
     }
 
+
+    fun insertWord(word:Word){
+
+        //Essa função se resolverá em Background
+        val id = viewModel.insert(word).get()
+
+        runOnUiThread {
+
+            if(id!= -1L){
+                alert("Inserido com sucesso","Sucesso") {
+                    okButton {  }
+                }.show()
+
+            }else{
+                alert("Falha ao inserir","Falha") {
+                    okButton {  }
+                }.show()
+            }
+        }
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -74,22 +91,7 @@ class MainActivity : AppCompatActivity() {
 
                 val word = Word(it.getStringExtra(NewWordActivity.EXTRA_REPLY))
 
-                val id = viewModel.insert(word).get()
-
-                runOnUiThread {
-
-                    if(id!= -1L){
-                        alert("Inserido com sucesso","Sucesso") {
-                            okButton {  }
-                        }.show()
-
-                    }else{
-                        alert("Falha ao inserir","Falha") {
-                            okButton {  }
-                        }.show()
-                    }
-
-                }
+                insertWord(word)
             }
         }
 
